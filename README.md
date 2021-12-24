@@ -79,7 +79,7 @@ When I was reading [A Reinforcement Learning Approach for Sequential Spatial Tra
 
 Finally, I have tried to implement [A Reinforcement Learning Approach for Sequential Spatial Transformer Networks](https://arxiv.org/abs/2106.14295) because I was interested in the idea of reinforcement learning applied to spatial transformers networks. In this case, Azimi et al. modified the localisation network to act as a policy network. The paper proposes that the affine transformations are predefined so the problem is transformed to a sequence of simple and discrete transformations using reinforcement learning to solve this decision problem. 
 
-![](https://i.loli.net/2018/07/16/5b4c8d88a70a2.png)
+![](/images_resources/RLSSTN.PNG)
 
 As seen in the image, the spatial transformer localisation network plus a LSTM and softmax layers form the Policy network. The Policy network output is the action ,i.e., the affine transformation. The state is composed of the current image and the previous action. The reward function is the substraction between the previous transformed image classification loss and the current image classification loss. As there is no code available I have implemented these concepts only by the papers' descriptions. Mind you that this is my first time exploring reinforcement learning neural nets (this was the reason I have tried to do it, to learn how reinforcement learning works), so any points and corrections are welcome.
 
@@ -144,11 +144,15 @@ The table above shows that with a smaller learning rate the RL algorithm is clea
 
 Lastly, there are 5 pictures depicting how does the different models modify MNIST images. All models were trained with same batch size (64), number of epochs (5) and learning rate (0,01).
 
-|STN|SSTN 2 LSTM iterations|SSTN 5 LSTM iterations|LRSSTN 2 LSTM iterations|LRSSTN 5 LSTM iterations|
-|:---:|:---:|:---:|:---:|:---:|
-|![](https://i.loli.net/2018/07/16/5b4c7db11abf9.png)|![](https://i.loli.net/2018/07/16/5b4c7dbd03169.png)|![](https://i.loli.net/2018/07/16/5b4c8d88a70a2.png)|![](https://i.loli.net/2018/07/16/5b4c7dbd03169.png)|![](https://i.loli.net/2018/07/16/5b4c8d88a70a2.png)|
+|STN|SSTN 2 LSTM iterations|SSTN 5 LSTM iterations|
+|:---:|:---:|:---:|
+|![](/images_resources/STN.png)|![](/images_resources/SSTN_2_LSTM_it.png)|![](/images_resources/SSTN_5_LSTM_it.png)|
 
-On the left we can see the SPT transformation is minimal there are only some translation and shearing. Bpth SSTN rotate the numbers 90º and the 5 LSTM iteration adjusts the numbers better to the available space making them bigger. Finally, RLSSTN applies all affine transformations at once. Comparing the two RLSSTN it is fair to say that more transformations achieve worse results according to, as we say before, not being able to reverse the transformations.
+|RLSSTN 2 LSTM iterations|RLSSTN 5 LSTM iterations|
+|:---:|:---:|
+|![](/images_resources/RLSSTN_2_LSTM_it.png)|![](/images_resources/RLSSTN_5_LSTM_it.png)|
+
+On the first left image we can see the SPT transformation is minimal there are only some translation and shearing. Bpth SSTN rotate the numbers 90º and the 5 LSTM iteration adjusts the numbers better to the available space making them bigger. Finally, RLSSTN applies all affine transformations at once. Comparing the two RLSSTN it is fair to say that more transformations achieve worse results according to, as we say before, not being able to reverse the transformations.
 
 ## References
 
