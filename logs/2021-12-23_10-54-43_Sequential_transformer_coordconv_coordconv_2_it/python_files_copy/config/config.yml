@@ -1,0 +1,22 @@
+model_name:             Sequential_transformer_coordconv_coordconv_2_it # Name used to save the model in logs folder
+model_selection:
+  Spatial_transformer:  1     # 0 Spatial transformer, 1 sequential transformer, 2 reinforced transformer
+  iterations:           2     # Minimum value of 2 for reinforced transformer, minimum value of 1 for sequential transformer and it does not affect spatial transformer
+  loss_gamma:           0.98  # Penalty value used by the reinforcement learning algorithm
+conv_coord_selection:         # Any model can use convolutional layers or ConvCoord layers, set to False to use ConvCoord layers
+  conv_localisation:    False  # Modify conv layers before affine transformation, set to False to use ConvCoord layers
+  conv_classification:  False  # Modify conv layers in the classification network, set to False to use ConvCoord layers
+dataloader_parameters:        # These modifications affect both train and test dataloaders
+  batch_size:           64  
+  shuffle:              True
+  num_workers:          0
+model_hyperparameters:
+  epoch_end:            5     # Number of epochs the model is trained 
+  learning_rate:        0.01  # Default value of 0.01 for spatial and sequential transformer and 0.001 for reinforced transformer
+visualizations:
+  print_metrics:        True  # Show metrics on the terminal at the end of each epoch
+  save_metrics:         True  # Save metrics in the log folder
+  save_cf_matrix:       True  # Save last confusion matrix in the log folder
+  show_cf_matrix:       False # Plot last confusion matrix
+  save_stn:             True  # Save last affine transformation in the log folder
+  show_stn:             False # Plot last affine transformation
